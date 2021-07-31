@@ -1,0 +1,3 @@
+INSERT INTO `student_db`.`student_infomation` (`student_id`, `address`, `email`, `first_name`, `last_name`, `tel_no`) VALUES ('1001', 'warakapoal', 'abc@gmail.com', 'Harshana', 'Madusanka', '0445686598');
+INSERT INTO `student_db`.`student_infomation` (`student_id`, `address`, `email`, `first_name`, `last_name`, `tel_no`) VALUES ('1002', 'Kandy', 'kandy@gmail.com', 'Kawshalya', 'Madushani', '0323568974656');
+INSERT INTO `student_db`.`student_infomation` (`student_id`, `address`, `email`, `first_name`, `last_name`, `tel_no`) VALUES ('1003', 'ambepussa', 'kaml@gmail.com', 'kaml', 'Madusnaka', '1234567');
