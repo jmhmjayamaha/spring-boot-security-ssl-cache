@@ -23,38 +23,42 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public Student getByFirstName(String firstName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> getByFirstName(String firstName) {
+		return studentRepository.findByFirstName(firstName);
 	}
 
 	@Override
 	public Student getByLastName(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentRepository.findByLastName(lastName);
 	}
 
 	@Override
 	public Student getByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentRepository.findByEmail(email);
 	}
 
 	@Override
-	public void deleteStudent(int id) {
-		// TODO Auto-generated method stub
-		
+	public boolean deleteStudent(int id) {
+		Student student = studentRepository.findById(id).get();
+		if(student != null) {
+			studentRepository.delete(student);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public void addStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+		studentRepository.save(student);
 	}
 
 	@Override
-	public Student updateStudent(Student student) {
-		// TODO Auto-generated method stub
+	public Student updateStudent(int id,Student student) {
+		Student studentById = studentRepository.findById(id).get();
+		if(studentById != null) {
+			student.setStudentId(id);
+			return studentRepository.save(student);
+		}
 		return null;
 	}
 

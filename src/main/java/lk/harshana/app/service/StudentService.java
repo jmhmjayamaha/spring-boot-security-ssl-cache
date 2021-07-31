@@ -8,17 +8,17 @@ public interface StudentService {
 
 	Student getStudent(Integer id);
 	
-	Student getByFirstName(String firstName);
+	List<Student> getByFirstName(String firstName);
 	
 	Student getByLastName(String lastName);
 	
 	Student getByEmail(String email);
 	
-	void deleteStudent(int id);
+	boolean deleteStudent(int id);
 	
 	void addStudent(Student student);
 	
-	Student updateStudent(Student student);
+	Student updateStudent(int id,Student student);
 	
 	List<Student> getAllStudent();
 }

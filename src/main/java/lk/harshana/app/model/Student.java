@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "student_infomation")
+@DynamicUpdate
 public class Student {
 
 	@Id
@@ -30,12 +33,25 @@ public class Student {
 	
 	@Column(name="telNo")
 	private String telNo;
+	
+	public Student(String firstName, String lastName, String address, String email, String telNo) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.telNo = telNo;
+	}
+	
+	public Student() {
+		
+	}
 
-	public int getStudentId() {
+	public Integer getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(int studentId) {
+	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
 	}
 
