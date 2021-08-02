@@ -16,20 +16,34 @@ public class WebContainerConfig {
 	
 	@Bean
 	public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
-		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
-
-			@Override
-			protected void postProcessContext(Context context) {
-				SecurityConstraint constraint = new SecurityConstraint();
-				constraint.setUserConstraint(USER_CONSTRAINT);
-				SecurityCollection collection = new SecurityCollection();
-				collection.addPattern("/*");
-				constraint.addCollection(collection);
-				context.addConstraint(constraint);				
-			}			
-		};
+//		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+//
+//			@Override
+//			protected void postProcessContext(Context context) {
+//				SecurityConstraint constraint = new SecurityConstraint();
+//				constraint.setUserConstraint(USER_CONSTRAINT);
+//				SecurityCollection collection = new SecurityCollection();
+//				collection.addPattern("/*");
+//				constraint.addCollection(collection);
+//				context.addConstraint(constraint);				
+//			}			
+//		};
+		CustomTomcatServletWebServverFactory tomcat = new CustomTomcatServletWebServverFactory();
 		tomcat.addAdditionalTomcatConnectors(createSSLConnector());
 		return tomcat;
+	}
+	
+	static final class CustomTomcatServletWebServverFactory extends TomcatServletWebServerFactory {
+		
+		@Override
+		protected void postProcessContext(Context context) {
+			SecurityConstraint constraint = new SecurityConstraint();
+			constraint.setUserConstraint(USER_CONSTRAINT);
+			SecurityCollection collection = new SecurityCollection();
+			collection.addPattern("/*");
+			constraint.addCollection(collection);
+			context.addConstraint(constraint);				
+		}
 	}
 	
 	private Connector createSSLConnector() {
